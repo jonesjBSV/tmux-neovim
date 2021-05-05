@@ -45,7 +45,7 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground'
 
 " Debugger Plugins
-Plug 'puremourning/vimspector'
+" Plug 'puremourning/vimspector'
 Plug 'szw/vim-maximizer'
 
 Plug 'rust-lang/rust.vim'
@@ -62,6 +62,9 @@ Plug 'gruvbox-community/gruvbox'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'tpope/vim-projectionist'
 
+" The Coc
+Plug 'neoclide/coc.nvim', {'branch':'release'}
+
 call plug#end()
 
 colorscheme gruvbox
@@ -76,6 +79,14 @@ endif
 
 let loaded_matchparen = 1
 let mapleader = " "
+
+" Telescope remaps
+
+" Find files using Telescope command-line sugar.
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 nnoremap <leader>ghw :h <C-R>=expand("<cword>")<CR><CR>
 nnoremap <leader>bs /<C-R>=escape(expand("<cWORD>"), "/")<CR><CR>
