@@ -78,6 +78,10 @@ endif
 let loaded_matchparen = 1
 let mapleader = " "
 
+" Add blank line without leaving normal mode
+nnoremap <Leader>o o<Esc>0"_D
+nnoremap <Leader>O O<Esc>0"_D
+
 " Telescope
 nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
 nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
