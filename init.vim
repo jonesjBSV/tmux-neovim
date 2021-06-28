@@ -1,24 +1,3 @@
-set tabstop=4 softtabstop=4
-set shiftwidth=4
-set expandtab
-set smartindent
-set exrc
-set nu
-set relativenumber
-set nohlsearch
-set hidden
-set noerrorbells
-set noswapfile
-set fileformat=unix
-set undodir=~/.vim/undodir/
-set undofile
-set nobackup
-set incsearch
-set termguicolors
-set scrolloff=8
-set colorcolumn=80
-set signcolumn=yes
-
 call plug#begin('~/.vim/plugged')
 
 " Plebvim lsp Plugins
@@ -36,7 +15,6 @@ Plug 'colepeters/spacemacs-theme.vim'
 
 Plug 'sainnhe/gruvbox-material'
 Plug 'phanviet/vim-monokai-pro'
-Plug 'flazz/vim-colorschemes'
 Plug 'chriskempson/base16-vim'
 Plug 'dracula/vim', { 'as': 'dracula' }
 
@@ -109,7 +87,7 @@ function! s:show_documentation()
 endfunction
 
 " Formatting selected code.
-xmap <leader>f  <Plug>(coc-format-selected)
+vmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
 
 nnoremap <leader>ghw :h <C-R>=expand("<cword>")<CR><CR>
