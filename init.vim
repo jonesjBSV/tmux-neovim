@@ -15,7 +15,7 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground'
 
 " Debugger Plugins
-" Plug 'puremourning/vimspector'
+Plug 'puremourning/vimspector'
 Plug 'szw/vim-maximizer'
 
 Plug 'tweekmonster/gofmt.vim'
@@ -30,8 +30,14 @@ Plug 'gruvbox-community/gruvbox'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'tpope/vim-projectionist'
 
+
+"LSP
+Plug 'neovim/nvim-lspconfig'
+Plug 'kabouzeid/nvim-lspinstall'
 Plug 'neoclide/coc.nvim'
 call plug#end()
+
+
 
 fun! EmptyRegisters()
     let regs=split('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789/-"', '\zs')
@@ -55,7 +61,7 @@ augroup END
 augroup MONKISH_REX
     autocmd!
     autocmd BufWritePre * %s/\s\+$//e
-    autocmd BufEnter,BufWinEnter,TabEnter *.rs :lua require'lsp_extensions'.inlay_hints{}
+    autocmd BufEnter,BufWinEnter,TabEnter *.rs :lua require('lsp_extensions').inlay_hints{}
 augroup END
 
 " WSL yank support
