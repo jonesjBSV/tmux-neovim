@@ -1,4 +1,4 @@
-Tmux and Neovim setting.
+Tmux and Neovim settings.
 
 How I manage them on my end is via a symlink
 
