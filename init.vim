@@ -1,4 +1,21 @@
+" hello front end msters
+set path+=**
+
+" Nice menu when typing `:find *.py`
+set wildmode=longest,list,full
+set wildmenu
+" Ignore files
+set wildignore+=*.pyc
+set wildignore+=*_build/*
+set wildignore+=**/coverage/*
+set wildignore+=**/node_modules/*
+set wildignore+=**/android/*
+set wildignore+=**/ios/*
+set wildignore+=**/.git/*a
+
 call plug#begin('~/.vim/plugged')
+
+
 
 " Telescope
 Plug 'nvim-lua/popup.nvim'
@@ -10,7 +27,7 @@ Plug 'colepeters/spacemacs-theme.vim'
 Plug 'phanviet/vim-monokai-pro'
 Plug 'chriskempson/base16-vim'
 
-" Neovim ree shitter
+" Neovim ree sitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground'
 
@@ -34,10 +51,34 @@ Plug 'tpope/vim-projectionist'
 "LSP
 Plug 'neovim/nvim-lspconfig'
 Plug 'kabouzeid/nvim-lspinstall'
-Plug 'neoclide/coc.nvim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+
+"harpoon
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-lua/popup.nvim'
+Plug 'ThePrimeagen/harpoon'
+
 call plug#end()
 
 
+lua << EOF
+require('harpoon').setup({
+    global_settings = {
+        save_on_toggle = false,
+        save_on_change = true,
+        enter_on_sendcmd = false,
+    },
+})
+EOF
+
+lua << EOF
+require('telescope').setup({
+    defaults = {
+            file_ignore_patterns = {"node_modules"}
+        }
+})
+EOF
 
 fun! EmptyRegisters()
     let regs=split('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789/-"', '\zs')
@@ -64,15 +105,14 @@ augroup MONKISH_REX
     autocmd BufEnter,BufWinEnter,TabEnter *.rs :lua require('lsp_extensions').inlay_hints{}
 augroup END
 
-" WSL yank support
-let s:clip = '/mnt/c/Windows/System32/clip.exe'
+" WSL yank suppot
+let s:clip = '/mnt/c/Windows/System32/clip.exe'  " change this path according to your mount point
 if executable(s:clip)
     augroup WSLYank
         autocmd!
         autocmd TextYankPost * if v:event.operator ==# 'y' | call system(s:clip, @0) | endif
     augroup END
 endif
-
 
 colorscheme gruvbox
 highlight Low guibg=none

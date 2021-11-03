@@ -1,6 +1,3 @@
-let g:vim_be_good_log_file = 1
-let g:vim_apm_log = 1
-
 if executable('rg')
     let g:rg_derive_root='true'
 endif
@@ -41,7 +38,7 @@ endfunction
 nnoremap <leader>ghw :h <C-R>=expand("<cword>")<CR><CR>
 nnoremap <leader>bs /<C-R>=escape(expand("<cWORD>"), "/")<CR><CR>
 nnoremap <leader>u :UndotreeShow<CR>
-nnoremap <leader>pv :VEx<CR>
+nnoremap <leader>pv :Ex<CR>
 nnoremap <Leader><CR> :so ~/.config/nvim/init.vim<CR>
 nnoremap <Leader>+ :vertical resize +5<CR>
 nnoremap <Leader>- :vertical resize -5<CR>
@@ -63,6 +60,18 @@ nnoremap <leader>Y gg"+yG
 
 nnoremap <leader>d "_d
 vnoremap <leader>d "_d
+
+
+"Harpoon
+nnoremap <leader>n :lua require("harpoon.mark").add_file()<CR>
+nnoremap <C-h> :lua require("harpoon.ui").toggle_quick_menu()<CR>
+nnoremap <C-t> :lua require("harpoon.cmd-ui").toggle_quick_menu()<CR>
+
+nnoremap <C-j> :lua require("harpoon.ui").nav_file(1)<CR>
+nnoremap <C-k> :lua require("harpoon.ui").nav_file(2)<CR>
+nnoremap <C-l> :lua require("harpoon.ui").nav_file(3)<CR>
+nnoremap <C-;> :lua require("harpoon.ui").nav_file(4)<CR>
+
 
 
 "nnoremap <Leader>ww ofunction wait(ms: number): Promise<void> {<CR>return new Promise(res => setTimeout(res, ms));<CR>}<esc>k=i{<CR>
