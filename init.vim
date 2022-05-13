@@ -21,8 +21,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
-Plug 'nvim-telescope/telescope-fzy-native.nvim'
-Plug 'colepeters/spacemacs-theme.vim'
+Plug 'kyazdani42/nvim-web-devicons'
 
 Plug 'phanviet/vim-monokai-pro'
 Plug 'chriskempson/base16-vim'
@@ -49,14 +48,17 @@ Plug 'tpope/vim-projectionist'
 
 
 "LSP
+Plug 'williamboman/nvim-lsp-installer'
 Plug 'neovim/nvim-lspconfig'
 Plug 'kabouzeid/nvim-lspinstall'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+"Markdown
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npm install' }
+let g:mkdp_refresh_slow=1
+let g:mkdp_markdown_css='/home/jakeadmin/.local/github.css'
 
 "harpoon
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-lua/popup.nvim'
 Plug 'ThePrimeagen/harpoon'
 
 call plug#end()
@@ -72,13 +74,6 @@ require('harpoon').setup({
 })
 EOF
 
-lua << EOF
-require('telescope').setup({
-    defaults = {
-            file_ignore_patterns = {"node_modules"}
-        }
-})
-EOF
 
 fun! EmptyRegisters()
     let regs=split('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789/-"', '\zs')

@@ -10,10 +10,10 @@ nnoremap <Leader>o o<Esc>0"_D
 nnoremap <Leader>O O<Esc>0"_D
 
 " Telescope
-nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
-nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
-nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
-nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
+nnoremap <leader>ff :lua require('telescope.builtin').find_files()<cr>
+nnoremap <leader>fg :lua require('telescope.builtin').live_grep()<cr>
+nnoremap <leader>fb :lua require('telescope.builtin').buffers()<cr>
+nnoremap <leader>fh :lua require('telescope.builtin').help_tags()<cr>
 
 "Coc.nvim
 " GoTo code navigation.
@@ -70,7 +70,8 @@ nnoremap <C-t> :lua require("harpoon.cmd-ui").toggle_quick_menu()<CR>
 nnoremap <C-j> :lua require("harpoon.ui").nav_file(1)<CR>
 nnoremap <C-k> :lua require("harpoon.ui").nav_file(2)<CR>
 nnoremap <C-l> :lua require("harpoon.ui").nav_file(3)<CR>
-nnoremap <C-;> :lua require("harpoon.ui").nav_file(4)<CR>
+nnoremap <C-i> :lua require("harpoon.ui").nav_file(4)<CR>
+
 
 
 
