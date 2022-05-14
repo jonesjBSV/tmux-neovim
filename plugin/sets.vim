@@ -22,3 +22,24 @@ set signcolumn=yes
 set completeopt=menuone,noinsert,noselect
 set clipboard+=unnamedplus
 set spellfile=~/.config/spell/en.utf-8.add
+set spell spelllang=en_us
+
+autocmd FileType markdown setlocal spell
+autocmd FileType gitcommit setlocal spell
+
+autocmd FileType markdown setlocal complete+=kspell
+autocmd FileType gitcommit setlocal complete+=kspell
+
+set path+=**
+
+" Nice menu when typing `:find *.py`
+set wildmode=longest,list,full
+set wildmenu
+" Ignore files
+set wildignore+=*.pyc
+set wildignore+=*_build/*
+set wildignore+=**/coverage/*
+set wildignore+=**/node_modules/*
+set wildignore+=**/android/*
+set wildignore+=**/ios/*
+set wildignore+=**/.git/*a

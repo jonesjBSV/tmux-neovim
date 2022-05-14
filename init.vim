@@ -1,21 +1,4 @@
-" hello front end msters
-set path+=**
-
-" Nice menu when typing `:find *.py`
-set wildmode=longest,list,full
-set wildmenu
-" Ignore files
-set wildignore+=*.pyc
-set wildignore+=*_build/*
-set wildignore+=**/coverage/*
-set wildignore+=**/node_modules/*
-set wildignore+=**/android/*
-set wildignore+=**/ios/*
-set wildignore+=**/.git/*a
-
 call plug#begin('~/.vim/plugged')
-
-
 
 " Telescope
 Plug 'nvim-lua/popup.nvim'
@@ -46,17 +29,31 @@ Plug 'gruvbox-community/gruvbox'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'tpope/vim-projectionist'
 
-
 "LSP
 Plug 'williamboman/nvim-lsp-installer'
 Plug 'neovim/nvim-lspconfig'
-Plug 'kabouzeid/nvim-lspinstall'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'folke/lsp-colors.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'folke/trouble.nvim'
+
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
+
+" For vsnip users.
+Plug 'hrsh7th/cmp-vsnip'
+Plug 'hrsh7th/vim-vsnip'
+
+"Coc
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 "Markdown
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npm install' }
 let g:mkdp_refresh_slow=1
-let g:mkdp_markdown_css='/home/jakeadmin/.local/github.css'
+let g:mkdp_markdown_css='~/.config/nvim/github-markdown.css'
 
 "harpoon
 Plug 'ThePrimeagen/harpoon'
@@ -110,4 +107,4 @@ if executable(s:clip)
 endif
 
 colorscheme gruvbox
-highlight Low guibg=none
+"highlight Low guibg=none
