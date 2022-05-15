@@ -1,3 +1,4 @@
+set encoding=UTF-8
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
@@ -24,11 +25,11 @@ set clipboard+=unnamedplus
 set spellfile=~/.config/spell/en.utf-8.add
 set spell spelllang=en_us
 
-autocmd FileType markdown setlocal spell
-autocmd FileType gitcommit setlocal spell
-
-autocmd FileType markdown setlocal complete+=kspell
-autocmd FileType gitcommit setlocal complete+=kspell
+"autocmd FileType markdown setlocal spell
+"autocmd FileType gitcommit setlocal spell
+"
+"autocmd FileType markdown setlocal complete+=kspell
+"autocmd FileType gitcommit setlocal complete+=kspell
 
 set path+=**
 
@@ -43,3 +44,6 @@ set wildignore+=**/node_modules/*
 set wildignore+=**/android/*
 set wildignore+=**/ios/*
 set wildignore+=**/.git/*a
+set completeopt=menuone,noinsert,noselect
+
+let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']

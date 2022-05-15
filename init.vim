@@ -1,4 +1,15 @@
+
+
 call plug#begin('~/.vim/plugged')
+
+"Dev icons
+Plug 'ryanoasis/vim-devicons'
+
+"Fix lsp doc highlight
+Plug 'antoinemadec/FixCursorHold.nvim'
+
+"Autoclose quotes, parens, brackets, etc.
+Plug 'windwp/nvim-autopairs'
 
 " Telescope
 Plug 'nvim-lua/popup.nvim'
@@ -6,49 +17,48 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 
-Plug 'phanviet/vim-monokai-pro'
-Plug 'chriskempson/base16-vim'
+"Plug 'phanviet/vim-monokai-pro'
+"Plug 'chriskempson/base16-vim'
 
 " Neovim ree sitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'nvim-treesitter/playground'
 
 " Debugger Plugins
 Plug 'puremourning/vimspector'
 Plug 'szw/vim-maximizer'
+
+"Colorscheme
+Plug 'gruvbox-community/gruvbox'
 
 Plug 'tweekmonster/gofmt.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/gv.vim'
 Plug 'vim-utils/vim-man'
 Plug 'mbbill/undotree'
-Plug 'vuciv/vim-bujo'
+"Plug 'vuciv/vim-bujo'
 Plug 'tpope/vim-dispatch'
-Plug 'theprimeagen/vim-be-good'
-Plug 'gruvbox-community/gruvbox'
-Plug 'octol/vim-cpp-enhanced-highlight'
+"Plug 'theprimeagen/vim-be-good'
 Plug 'tpope/vim-projectionist'
 
 "LSP
-Plug 'williamboman/nvim-lsp-installer'
 Plug 'neovim/nvim-lspconfig'
-Plug 'folke/lsp-colors.nvim'
-Plug 'kyazdani42/nvim-web-devicons'
+Plug 'williamboman/nvim-lsp-installer'
+Plug 'tamago324/nlsp-settings.nvim'
+Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
+Plug 'jose-elias-alvarez/null-ls.nvim'
 Plug 'folke/trouble.nvim'
 
-Plug 'neovim/nvim-lspconfig'
-Plug 'hrsh7th/cmp-nvim-lsp'
+"LSP completions
+Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-cmdline'
-Plug 'hrsh7th/nvim-cmp'
 
-" For vsnip users.
-Plug 'hrsh7th/cmp-vsnip'
-Plug 'hrsh7th/vim-vsnip'
-
-"Coc
-"Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Snippets
+Plug 'saadparwaiz1/cmp_luasnip'
+Plug 'L3MON4D3/LuaSnip'
+Plug 'rafamadriz/friendly-snippets'
 
 "Markdown
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npm install' }
@@ -59,17 +69,6 @@ let g:mkdp_markdown_css='~/.config/nvim/github-markdown.css'
 Plug 'ThePrimeagen/harpoon'
 
 call plug#end()
-
-
-lua << EOF
-require('harpoon').setup({
-    global_settings = {
-        save_on_toggle = false,
-        save_on_change = true,
-        enter_on_sendcmd = false,
-    },
-})
-EOF
 
 
 fun! EmptyRegisters()
@@ -91,11 +90,11 @@ augroup highlight_yank
     autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank({timeout = 40})
 augroup END
 
-augroup MONKISH_REX
-    autocmd!
-    autocmd BufWritePre * %s/\s\+$//e
-    autocmd BufEnter,BufWinEnter,TabEnter *.rs :lua require('lsp_extensions').inlay_hints{}
-augroup END
+"augroup MONKISH_REX
+"    autocmd!
+"    autocmd BufWritePre * %s/\s\+$//e
+"    autocmd BufEnter,BufWinEnter,TabEnter *.rs :lua require('lsp_extensions').inlay_hints{}
+"augroup END
 
 " WSL yank suppot
 let s:clip = '/mnt/c/Windows/System32/clip.exe'  " change this path according to your mount point
@@ -108,3 +107,14 @@ endif
 
 colorscheme gruvbox
 "highlight Low guibg=none
+
+
+
+lua << EOF
+require('monkishrex')
+--require "monkishrex.cmp"
+--require "monkishrex.lsp"
+--require "monkishrex.autocommands"
+--require "monkishrex.telescope"
+--require "monkishrex.trouble"
+EOF

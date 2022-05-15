@@ -9,32 +9,6 @@ let mapleader = " "
 nnoremap <Leader>o o<Esc>0"_D
 nnoremap <Leader>O O<Esc>0"_D
 
-" Telescope
-nnoremap <leader>ff :lua require('telescope.builtin').find_files()<cr>
-nnoremap <leader>fg :lua require('telescope.builtin').live_grep()<cr>
-nnoremap <leader>fb :lua require('telescope.builtin').buffers()<cr>
-nnoremap <leader>fh :lua require('telescope.builtin').help_tags()<cr>
-
-"Coc.nvim
-" GoTo code navigation.
-"nmap <silent> gd <Plug>(coc-definition)
-"nmap <silent> gy <Plug>(coc-type-definition)
-"nmap <silent> gi <Plug>(coc-implementation)
-"nmap <silent> gr <Plug>(coc-references)
-
-" Use K to show documentation in preview window.
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  elseif (coc#rpc#eady())
-    call CocActionAsync('doHover')
-  else
-    execute '!' . &keywordprg . " " . expand('<cword>')
-  endif
-endfunction
-
 nnoremap <leader>ghw :h <C-R>=expand("<cword>")<CR><CR>
 nnoremap <leader>bs /<C-R>=escape(expand("<cWORD>"), "/")<CR><CR>
 nnoremap <leader>u :UndotreeShow<CR>
@@ -60,20 +34,6 @@ nnoremap <leader>Y gg"+yG
 
 nnoremap <leader>d "_d
 vnoremap <leader>d "_d
-
-
-"Harpoon
-nnoremap <leader>n :lua require("harpoon.mark").add_file()<CR>
-nnoremap <C-h> :lua require("harpoon.ui").toggle_quick_menu()<CR>
-nnoremap <C-t> :lua require("harpoon.cmd-ui").toggle_quick_menu()<CR>
-
-nnoremap <C-j> :lua require("harpoon.ui").nav_file(1)<CR>
-nnoremap <C-k> :lua require("harpoon.ui").nav_file(2)<CR>
-nnoremap <C-l> :lua require("harpoon.ui").nav_file(3)<CR>
-nnoremap <C-i> :lua require("harpoon.ui").nav_file(4)<CR>
-
-
-
 
 "nnoremap <Leader>ww ofunction wait(ms: number): Promise<void> {<CR>return new Promise(res => setTimeout(res, ms));<CR>}<esc>k=i{<CR>
 
