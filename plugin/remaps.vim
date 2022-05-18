@@ -12,8 +12,9 @@ nnoremap <Leader>O O<Esc>0"_D
 nnoremap <leader>ghw :h <C-R>=expand("<cword>")<CR><CR>
 nnoremap <leader>bs /<C-R>=escape(expand("<cWORD>"), "/")<CR><CR>
 nnoremap <leader>u :UndotreeShow<CR>
-nnoremap <leader>pv :Ex<CR>
-nnoremap <Leader><CR> :so ~/.config/nvim/init.vim<CR>
+nnoremap <leader>pv :NvimTreeOpen<CR>
+nnoremap <leader>vp :NvimTreeClose<CR>
+nnoremap <Leader><CR> :so %<CR>
 nnoremap <Leader>+ :vertical resize +5<CR>
 nnoremap <Leader>- :vertical resize -5<CR>
 nnoremap <Leader>rp :resize 100<CR>

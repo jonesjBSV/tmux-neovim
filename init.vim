@@ -68,6 +68,9 @@ let g:mkdp_markdown_css='~/.config/nvim/github-markdown.css'
 "harpoon
 Plug 'ThePrimeagen/harpoon'
 
+"nvim-tree
+Plug 'kyazdani42/nvim-tree.lua'
+
 call plug#end()
 
 
@@ -90,11 +93,11 @@ augroup highlight_yank
     autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank({timeout = 40})
 augroup END
 
-"augroup MONKISH_REX
-"    autocmd!
-"    autocmd BufWritePre * %s/\s\+$//e
-"    autocmd BufEnter,BufWinEnter,TabEnter *.rs :lua require('lsp_extensions').inlay_hints{}
-"augroup END
+augroup MONKISH_REX
+    autocmd!
+    autocmd BufWritePre * %s/\s\+$//e
+    autocmd BufEnter,BufWinEnter,TabEnter *.rs :lua require('lsp_extensions').inlay_hints{}
+augroup END
 
 " WSL yank suppot
 let s:clip = '/mnt/c/Windows/System32/clip.exe'  " change this path according to your mount point
