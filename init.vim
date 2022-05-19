@@ -37,7 +37,7 @@ Plug 'vim-utils/vim-man'
 Plug 'mbbill/undotree'
 "Plug 'vuciv/vim-bujo'
 Plug 'tpope/vim-dispatch'
-"Plug 'theprimeagen/vim-be-good'
+Plug 'theprimeagen/vim-be-good'
 Plug 'tpope/vim-projectionist'
 
 "LSP

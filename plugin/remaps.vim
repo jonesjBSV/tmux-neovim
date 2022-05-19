@@ -5,6 +5,19 @@ endif
 let loaded_matchparen = 1
 let mapleader = " "
 
+"Harpoon
+nnoremap <silent><leader>n :lua require("harpoon.mark").add_file()<CR>
+nnoremap <silent><leader>m :lua require("harpoon.ui").toggle_quick_menu()<CR>
+nnoremap <silent><C-h> :lua require("harpoon.ui").nav_file(1)<CR>
+nnoremap <silent><C-j> :lua require("harpoon.ui").nav_file(2)<CR>
+nnoremap <silent><C-k> :lua require("harpoon.ui").nav_file(3)<CR>
+nnoremap <silent><C-l> :lua require("harpoon.ui").nav_file(4)<CR>
+
+
+"Telescope
+nnoremap <leader>ff :Telescope find_files<CR>
+nnoremap <leader>gf :Telescope live_grep<CR>
+
 " Add blank line without leaving normal mode
 nnoremap <Leader>o o<Esc>0"_D
 nnoremap <Leader>O O<Esc>0"_D

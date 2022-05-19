@@ -84,8 +84,8 @@ nvim_tree.setup {
         { key = "h", cb = tree_cb "close_node" },
       },
     },
-    number = false,
-    relativenumber = false,
+    number = true,
+    relativenumber = true,
   },
   trash = {
     cmd = "trash",
