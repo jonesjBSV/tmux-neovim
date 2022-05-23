@@ -44,6 +44,13 @@ nvim_tree.setup {
     enable = true,
     auto_open = true,
   },
+  actions = {
+      use_system_clipboard = true,
+      open_file = {
+          quit_on_open = true,
+          resize_window = true,
+      },
+  },
   diagnostics = {
     enable = true,
     icons = {

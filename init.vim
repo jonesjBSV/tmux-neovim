@@ -54,6 +54,7 @@ Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-cmdline'
+Plug 'mfussenegger/nvim-jdtls'
 
 "Snippets
 Plug 'saadparwaiz1/cmp_luasnip'
@@ -83,6 +84,8 @@ endfun
 
 " ES
 com! W w
+
+autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif
 
 nmap <leader>nn :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
 \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
@@ -115,9 +118,4 @@ colorscheme gruvbox
 
 lua << EOF
 require('monkishrex')
---require "monkishrex.cmp"
---require "monkishrex.lsp"
---require "monkishrex.autocommands"
---require "monkishrex.telescope"
---require "monkishrex.trouble"
 EOF

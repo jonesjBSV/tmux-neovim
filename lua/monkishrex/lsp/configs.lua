@@ -1,15 +1,16 @@
-local status_ok, lsp_installer = pcall(require, 'nvim-lsp-installer')
+local status_ok, lsp_installer = pcall(require, "nvim-lsp-installer")
 if not status_ok then
-    return
+	return
 end
 
 local lspconfig = require("lspconfig")
 
-local servers = {"jsonls", "sumneko_lua", "angularls", "emmet_ls", "gopls", "grammarly",
-                "html", "prosemd_lsp", "remark_ls", "sumneko_lua", "vimls", "zk", "jdtls"}
+local servers = {
+    "jdtls", "tsserver", "angularls", "emmet_ls", "html", "jsonls", "gopls", "grammarly", "html", "jsonls", "prosemd_lsp", "remark_ls", "sumneko_lua", "vimls", "zk",
+}
 
 lsp_installer.setup {
-    ensure_installed = servers
+	ensure_installed = servers
 }
 
 for _, server in pairs(servers) do
