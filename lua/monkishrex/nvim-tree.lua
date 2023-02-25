@@ -15,7 +15,7 @@ local tree_cb = nvim_tree_config.nvim_tree_callback
 nvim_tree.setup {
   disable_netrw = true,
   hijack_netrw = true,
-  open_on_setup = false,
+  open_on_setup = true,
   open_on_tab = false,
   hijack_cursor = false,
   update_cwd = true,
@@ -46,7 +46,7 @@ nvim_tree.setup {
   actions = {
       use_system_clipboard = true,
       open_file = {
-          quit_on_open = true,
+          quit_on_open = false,
           resize_window = true,
       },
   },
@@ -79,8 +79,6 @@ nvim_tree.setup {
   },
   view = {
     adaptive_size = true,
-    width = 30,
-    height = 30,
     hide_root_folder = false,
     side = "left",
     mappings = {
