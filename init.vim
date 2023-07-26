@@ -72,6 +72,9 @@ Plug 'ThePrimeagen/harpoon'
 "nvim-tree
 Plug 'kyazdani42/nvim-tree.lua'
 
+"Github Copilot
+Plug 'github/copilot.vim'
+
 call plug#end()
 
 
