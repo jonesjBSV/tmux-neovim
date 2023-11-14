@@ -1,4 +1,5 @@
-
+let g:loaded_netrw=1
+let g:loaded_netrwPlugin=1
 
 call plug#begin('~/.vim/plugged')
 
@@ -70,7 +71,8 @@ let g:mkdp_markdown_css='~/.config/nvim/github-markdown.css'
 Plug 'ThePrimeagen/harpoon'
 
 "nvim-tree
-Plug 'kyazdani42/nvim-tree.lua'
+Plug 'nvim-tree/nvim-tree.lua'
+Plug 'nvim-tree/nvim-web-devicons'
 
 "Github Copilot
 Plug 'github/copilot.vim'

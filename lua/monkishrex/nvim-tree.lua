@@ -5,14 +5,9 @@ if not status_ok then
   return
 end
 
-local config_status_ok, nvim_tree_config = pcall(require, "nvim-tree.config")
-if not config_status_ok then
-  return
-end
 
-local tree_cb = nvim_tree_config.nvim_tree_callback
 
-local function on_attach(bufnr)
+local function my_on_attach(bufnr)
   local api = require('nvim-tree.api')
 
   local function opts(desc)
@@ -25,14 +20,14 @@ local function on_attach(bufnr)
   -- BEGIN_DEFAULT_ON_ATTACH
   vim.keymap.set('n', '<C-]>', api.tree.change_root_to_node,          opts('CD'))
   vim.keymap.set('n', '<C-e>', api.node.open.replace_tree_buffer,     opts('Open: In Place'))
-  vim.keymap.set('n', '<C-k>', api.node.show_info_popup,              opts('Info'))
+  --vim.keymap.set('n', '<C-k>', api.node.show_info_popup,              opts('Info'))
   vim.keymap.set('n', '<C-r>', api.fs.rename_sub,                     opts('Rename: Omit Filename'))
   vim.keymap.set('n', '<C-t>', api.node.open.tab,                     opts('Open: New Tab'))
   vim.keymap.set('n', '<C-v>', api.node.open.vertical,                opts('Open: Vertical Split'))
   vim.keymap.set('n', '<C-x>', api.node.open.horizontal,              opts('Open: Horizontal Split'))
   vim.keymap.set('n', '<BS>',  api.node.navigate.parent_close,        opts('Close Directory'))
   vim.keymap.set('n', '<CR>',  api.node.open.edit,                    opts('Open'))
-  vim.keymap.set('n', '<Tab>', api.node.open.preview,                 opts('Open Preview'))
+  vim.keymap.set('n', 'l', api.node.open.preview,                 opts('Open Preview'))
   vim.keymap.set('n', '>',     api.node.navigate.sibling.next,        opts('Next Sibling'))
   vim.keymap.set('n', '<',     api.node.navigate.sibling.prev,        opts('Previous Sibling'))
   vim.keymap.set('n', '.',     api.node.run.cmd,                      opts('Run Command'))
@@ -74,29 +69,33 @@ local function on_attach(bufnr)
   vim.keymap.set('n', 'x',     api.fs.cut,                            opts('Cut'))
   vim.keymap.set('n', 'y',     api.fs.copy.filename,                  opts('Copy Name'))
   vim.keymap.set('n', 'Y',     api.fs.copy.relative_path,             opts('Copy Relative Path'))
-  vim.keymap.set('n', '<2-LeftMouse>',  api.node.open.edit,           opts('Open'))
-  vim.keymap.set('n', '<2-RightMouse>', api.tree.change_root_to_node, opts('CD'))
+  vim.keymap.set('n', '<leader>pv', api.node.open.edit, opts('Open'))
+  vim.keymap.set('n', '<leader>vp', api.tree.close, opts('Close'))
+  vim.keymap.set('n', '<C-h>', api.tree.close, opts('Close'))
+  vim.keymap.set('n', '<C-j>', api.tree.close, opts('Close'))
+  vim.keymap.set('n', '<C-k>', api.tree.close, opts('Close'))
+  vim.keymap.set('n', '<C-l>', api.tree.close, opts('Close'))
+--  vim.keymap.set('n', '<2-LeftMouse>',  api.node.open.edit,           opts('Open'))
+--  vim.keymap.set('n', '<2-RightMouse>', api.tree.change_root_to_node, opts('CD'))
   -- END_DEFAULT_ON_ATTACH
 
 
   -- Mappings migrated from view.mappings.list
   --
   -- You will need to insert "your code goes here" for any mappings with a custom action_cb
-  vim.keymap.set('n', 'l', api.node.open.edit, opts('Open'))
-  vim.keymap.set('n', '<CR>', api.node.open.edit, opts('Open'))
-  vim.keymap.set('n', 'o', api.node.open.edit, opts('Open'))
-  vim.keymap.set('n', 'h', api.node.navigate.parent_close, opts('Close Directory'))
+--  vim.keymap.set('n', 'l<CR>', api.node.open.edit, opts('Open'))
+--  vim.keymap.set('n', 'o', api.node.open.edit, opts('Open'))
 
 end
 
 
-nvim_tree.setup {
+require("nvim-tree").setup {
   disable_netrw = true,
   hijack_netrw = true,
   open_on_tab = false,
   hijack_cursor = false,
   update_cwd = true,
-  on_attach = on_attach,
+  on_attach = my_on_attach,
   renderer = {
       icons = {
           glyphs = {
@@ -157,15 +156,15 @@ nvim_tree.setup {
   },
   view = {
     adaptive_size = true,
-    hide_root_folder = false,
+    -- hide_root_folder = false,
     side = "left",
-    mappings = {
-      custom_only = false,
-      list = {
-        { key = { "l", "<CR>", "o" }, cb = tree_cb "edit" },
-        { key = "h", cb = tree_cb "close_node" },
-      },
-    },
+    -- mappings = {
+      -- custom_only = false,
+      --list = {
+        -- { key = { "l", "<CR>", "o" }, cb = tree_cb "edit" },
+        -- { key = "h", cb = tree_cb "close_node" },
+      --},
+    -- },
     number = true,
     relativenumber = true,
   },
